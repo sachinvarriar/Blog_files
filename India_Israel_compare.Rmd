@@ -1,0 +1,109 @@
+---
+title: "indiavsisrael"
+author: "Sachin Varriar"
+date: "1/17/2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+
+
+
+I was shocked to read that Israel has offered to help India to analyse India's big data to help farmers. But does India really lack the analytics talent to analyse our own data. Isn't it better we put our data in the hands of our countrymen, which we have been doing in last few months with all the Aadhar linking and eKYC processes. 
+
+I tried comparing India and Israel in terms of their analytics talent. I have used the recent kaggle survey and some references from the web to provide some evidence why it would be a good idea to keep our data to ourselves.
+
+
+
+India's position in the Analytics space
+
+Based on Analytics India Magazine, India is one of the best places for Data scientists being ranked in the top ten countries who pay data scientist based on purchasing power parity(PPP). Analytics India Magazine have also published the Data science workforce in India for some of the biggest companies in the world. HP, HSBC, Dell and Accenture have a rather high number of their data science workforce in India. Companies like Citi Bank hire some of the best talents produced by the country with a large alumni base from ISI.
+
+Now this is some of the things that show why India has a large data science capability. We have the data, we have the statisticians, engineers and policy makers to handle this data. Let us now check out the kaggle survey data. 
+
+The Dataset and analysis
+
+All my analysis here are based on people who have taken the Kaggle survey. Kaggle one of the platforms where lot of data scientist compete should definitely be a good place to search for data. Assuming that the kaggle survey takers are a true representation of the real data science population, we see that 
+
+
+
+India(2704) is the second most active country, after the US on kaggle while only a small number of respondents from Israel.
+```{r}
+a<-table(multipleChoiceResponses$Country)
+plot(head(sort(a,decreasing = T)), type = "h", lwd = 10)
+```
+
+Lets split these into subsets
+```{r}
+India<-subset(multipleChoiceResponses, multipleChoiceResponses$Country=="India")
+Israel<-subset(multipleChoiceResponses, multipleChoiceResponses$Country=="Israel")
+```
+
+
+While 62% of Indians chose not to reveal how long they were learning data science, 90% of Israelis chose not to respond
+
+
+```{r}
+table(India$LearningDataScienceTime)/2704
+table(Israel$LearningDataScienceTime)/105
+```
+Both nations don't have respondents who have more than 10 years of experience, however Israel may have a little more employees having between 5-10 years of experience considering that the 105 respondents is a good representative sample.
+
+Looking at the distribution of age of data scientist, India definitely has younger data scientists, and considering the demographic dividend it would be a mistake to not use this young pool of talent. 
+
+```{r}
+hist(India$Age)
+hist(Israel$Age)
+```
+
+```{r}
+(table(India$EmploymentStatus))
+(table(Israel$EmploymentStatus))
+```
+
+```{r}
+table(India$StudentStatus)
+
+```
+
+```{r}
+240/2704
+```
+
+
+```{r}
+table(India$MLMethodNextYearSelect)
+
+```
+
+
+```{r}
+b<-table(India$MLToolNextYearSelect)
+plot(head(sort(b,decreasing = T)))
+```
+
+
+```{r}
+table(India$JobSkillImportanceBigData)
+
+```
+
+```{r}
+(279+560)/2704
+```
+
+```{r}
+table(Israel$JobSkillImportanceBigData)
+```
+
+
+```{r}
+table(India$JobSkillImportanceStats)
+```
+
+```{r}
+(434+417)/2704
+```
+
